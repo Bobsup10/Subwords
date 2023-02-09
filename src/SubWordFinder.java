@@ -44,6 +44,11 @@ public class SubWordFinder implements WordFinder{
         }
     }
 
+    @Override
+    public ArrayList<SubWord> getSubWords() {
+        return null;
+    }
+
 
     /**
      * Retrieve all SubWord objects from the dictionary.
@@ -71,14 +76,14 @@ public class SubWordFinder implements WordFinder{
         }
         return subwords;
     }
-    int BinarySearch(ArrayList<String> Dictionary, int low, int high, String word) {
+    int BinarySearch(ArrayList<String> arr, int low, int high, String word) {
 
         while (low <= high) {
             int mid = (low + high) / 2;
-            if (dictionary.get(mid).equals(word)) {
+            if (arr.get(mid).equals(word)) {
                 return mid;
             }
-            else if (dictionary.get(mid).compareTo(word) < 0)
+            else if (arr.get(mid).compareTo(word) < 0)
             {
                 low = mid + 1;
             }
@@ -101,7 +106,7 @@ public class SubWordFinder implements WordFinder{
      */
     @Override
     public boolean inDictionary(String word) {
-
-        return false;
+        int index = alpha.indexOf(word.substring(0,1));
+        return BinarySearch(dictionary.get(index),0,dictionary.get(index).size(), word) >= 0;
     }
 }
