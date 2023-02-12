@@ -7,6 +7,9 @@ public class SubWordFinder implements WordFinder{
     private ArrayList<ArrayList<String>> dictionary;
     private String alpha = "abcdefghijklmnopqrstuvwxyz";
 
+    /**
+     * Creates an Array for Words in Dictionary
+     */
     public SubWordFinder()    {
         dictionary = new ArrayList<>();
         for(int i = 0; i < 26; i++)
@@ -110,6 +113,10 @@ public class SubWordFinder implements WordFinder{
         return binarySearch(bucket, 0, bucket.size()-1, word) >= 0;
     }
 
+    /**
+     *Main Method for SubWords
+     * @param args
+     */
     public static void main(String[] args) {
         SubWordFinder app = new SubWordFinder();
         ArrayList<SubWord> subwords = app.getSubWords();
